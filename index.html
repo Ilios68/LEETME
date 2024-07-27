@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quer ir ao cinema comigo?</title>
+        <style>
+            body {
+                background-color: yellow;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .painel {
+                margin: auto;
+                background-color: rgb(194, 26, 26);
+                width: 500px;
+                height: 600px;
+                border: 3px solid black;
+                border-radius: 20px;
+                text-align: center;
+                padding-top: 50px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #sim {
+                height: 40px;
+                width: 60px;
+                background-color: red;
+                border: 2px solid white;
+                border-radius: 10px;
+                color: white;
+                margin-left: -50px;
+                cursor: pointer;
+            }
+
+            #nao {
+                position: absolute;
+                height: 40px;
+                width: 60px;
+                background-color: red;
+                border: 2px solid white;
+                border-radius: 10px;
+                color: white;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            #aceitou {
+                width: 300px;
+                background-color: red;
+                border: 2px solid white;
+                border-radius: 10px;
+                color: white;
+                font-weight: bold;
+                padding: 20px;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            #resposta img {
+                width: 300px; 
+                height: 300px; 
+                object-fit: cover; 
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+        </style>
+        <script>
+           function fuja() {
+                var botaoNao = document.getElementById("nao");
+
+                var larguraJanela = window.innerWidth;
+                var alturaJanela = window.innerHeight;
+
+                var larguraBotao = botaoNao.offsetWidth;
+                var alturaBotao = botaoNao.offsetHeight;
+
+                var maxX = larguraJanela - larguraBotao;
+                var maxY = alturaJanela - alturaBotao;
+
+                var aleatorioX = Math.random() * maxX;
+                var aleatorioY = Math.random() * maxY;
+
+                botaoNao.style.position = 'absolute';
+                botaoNao.style.left = aleatorioX + "px";
+                botaoNao.style.top = aleatorioY + "px";
+            }
+
+            function clicou() {
+                var resposta = document.getElementById('resposta');
+                var principal = document.getElementById('principal');
+                if (resposta && principal) {
+                    resposta.style.display = 'block';
+                    principal.style.display = 'none';
+                }
+            }
+
+            function esconder() {
+                var elemento = document.getElementById('resposta');
+                if (elemento) {
+                    elemento.style.display = 'none';
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                esconder();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="painel">
+            <div id="principal">
+                <h1>Bora sair?</h1>
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTB0dDAwdW5uYXk2eWM0Mjkzcnp1bXZkcGFyMXJjb24zdWw3dWdxZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mz4gejLQKXmEM/200.webp" alt="">
+                <h2>Quer ir assistir Deadpool e Wolverine comigo?</h2>
+                <div class="row">
+                    <button id="sim" onclick="clicou()">Bora!</button>
+                    <button onmouseover="fuja()" id="nao"> Não! </button>
+                </div>
+            </div>
+            <div id="resposta">
+                <img src="https://br.web.img3.acsta.net/r_654_368/newsv7/16/11/14/22/44/300187.jpg" alt="">
+                <div id="aceitou">
+                    <h2>Me fala o dia que você vai estar livre.</h2>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
